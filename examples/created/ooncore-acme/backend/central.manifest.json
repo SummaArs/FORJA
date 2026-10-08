@@ -1,0 +1,12 @@
+{
+  "SERVICE_NAME": "ooncore-acme",
+  "NAMESPACE": "ooncore-acme",
+  "IMAGE": "ghcr.io/oondemand/ooncore-acme-backend",
+  "IMAGE_TAG": "latest",
+  "HOST": "ooncore-acme.oondemand.com",
+  "CENTRAL_ATIVACAO_URL": "https://central-ativacao.example.com",
+  "APP_CODE": "ooncore-acme",
+  "REPLICAS": "1",
+  "HPA_MIN": "1",
+  "HPA_MAX": "3"
+}

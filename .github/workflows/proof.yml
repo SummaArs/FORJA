@@ -23,3 +23,5 @@ jobs:
         run: PYTHONPATH=. python -m forja_core check examples/enterprise-portfolio.json
       - name: Compile adapter sources
         run: python -m compileall -q forja_core tests
+      - name: Verify created examples
+        run: PYTHONPATH=. python -m unittest -v tests.test_created_examples

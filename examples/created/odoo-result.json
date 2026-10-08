@@ -1,0 +1,17 @@
+{
+  "kind": "odoo",
+  "target": "/home/ubuntu/FORJA/examples/created/odoo-acme",
+  "module": "acme_opera_o",
+  "files": [
+    "README.md",
+    "__init__.py",
+    "__manifest__.py",
+    "models/__init__.py",
+    "models/record.py",
+    "security/ir.model.access.csv",
+    "views/acme_opera_o_views.xml"
+  ],
+  "apply": true,
+  "read_only": false,
+  "ok": true
+}

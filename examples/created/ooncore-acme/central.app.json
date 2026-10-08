@@ -1,0 +1,62 @@
+{
+  "$schema": "./node_modules/@oondemand/create-central-oon/schemas/central.app.schema.json",
+  "schemaVersion": 2,
+  "id": "ooncore-acme",
+  "name": "Ooncore Acme",
+  "slug": "ooncore-acme",
+  "appKind": "member-central",
+  "tenancyModel": "single_tenant",
+  "availability": "licensed",
+  "accessMode": "explicit_users",
+  "authorizationMode": "rbac",
+  "deploymentMode": "dedicated",
+  "modules": {
+    "collections": false,
+    "documents": false,
+    "pipelines": false,
+    "assistants": false,
+    "currencies": false
+  },
+  "capabilities": [],
+  "compatibility": {
+    "core": {
+      "minVersion": "0.6.0"
+    }
+  },
+  "activation": {
+    "enabled": true,
+    "configurationVersion": 1,
+    "fields": []
+  },
+  "rbac": {
+    "invitationTtlHours": 72,
+    "permissions": [],
+    "roles": [
+      {
+        "code": "admin",
+        "name": "Administrador",
+        "description": "Administra usuários, acessos e todas as operações da Central.",
+        "admin": true,
+        "permissions": ["*"]
+      },
+      {
+        "code": "operator",
+        "name": "Operador",
+        "description": "Opera a Central conforme as permissões de negócio declaradas pelo projeto.",
+        "permissions": []
+      },
+      {
+        "code": "developer",
+        "name": "Desenvolvedor",
+        "description": "Preserva a migração dos perfis de desenvolvimento existentes; permissões canônicas são declaradas pelo projeto.",
+        "permissions": []
+      },
+      {
+        "code": "viewer",
+        "name": "Consulta",
+        "description": "Perfil base para acesso somente às consultas explicitamente permitidas.",
+        "permissions": []
+      }
+    ]
+  }
+}

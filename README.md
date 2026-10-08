@@ -57,7 +57,7 @@ python3 -m forja_ledger demo
 
 ```text
 FORJA PROOF: PASS
-checks=21 violations=0
+checks=24 violations=0
 ```
 
 ## Os cinco passos da FORJA
@@ -112,6 +112,7 @@ Sem `--apply`, a FORJA apenas mostra o plano. Consulte [os adaptadores Local, Oo
 - [Protocolo empresarial](docs/06-PROTOCOLO-EMPRESARIAL.md)
 - [FORJA Enterprise OS](docs/07-ENTERPRISE-OS.md)
 - [Adaptadores Local, OonCore e Odoo](docs/09-ADAPTADORES-LOCAL-OONCORE-ODOO.md)
+- [Criações reais da FORJA](examples/CREATIONS.md)
 - [Relatório da prova](evidence/first-proof.md)
 
 ## Status honesto

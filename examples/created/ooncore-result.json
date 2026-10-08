@@ -1,0 +1,20 @@
+{
+  "kind": "ooncore",
+  "target": "/home/ubuntu/FORJA/examples/created/ooncore-acme",
+  "package": "@oondemand/create-central-oon@0.7.8",
+  "command": [
+    "npx",
+    "--yes",
+    "--package",
+    "@oondemand/create-central-oon@0.7.8",
+    "create-central-oon",
+    "ooncore-acme",
+    "--no-install"
+  ],
+  "apply": true,
+  "read_only": false,
+  "returncode": 0,
+  "stdout": "\n⚙  Criando oon-app \"Ooncore Acme\"\n✔ Documentação OonCore sincronizada em ooncore-acme/.ooncore\n  Versão: 0.7.8\n  Arquivos: 44\n✔ Arquivos gerados.\n\n✅ Central \"Ooncore Acme\" pronta.\n\nPróximos passos:\n  cd ooncore-acme\n  # Instale as dependências se usou --no-install ou se a instalação falhou.\n  # Configure MongoDB e os .env conforme README.md.\n  npm run dev\n\nSiga .ooncore/docs/OON_APP_AGENT_GUIDE.md: gerar, executar, implementar uma\njornada, validar e publicar pelo fluxo existente. Para alterar, consulte\n.ooncore/docs/TASK_INDEX.md. npm run check valida cache e conformidade.\n\n",
+  "stderr": "",
+  "ok": true
+}
