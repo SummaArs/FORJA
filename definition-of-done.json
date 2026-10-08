@@ -1,0 +1,20 @@
+{
+  "project": "forja-ledger",
+  "version": "0.1.0",
+  "claims": [
+    {"id":"C01","claim":"lançamento válido é persistido","evidence":"test_valid_entry"},
+    {"id":"C02","claim":"valor negativo é rejeitado","evidence":"test_negative_amount"},
+    {"id":"C03","claim":"repetição idempotente não duplica","evidence":"test_idempotent_replay"},
+    {"id":"C04","claim":"auditoria é criada","evidence":"test_audit_trail"},
+    {"id":"C05","claim":"queda antes do commit não grava","evidence":"test_crash_before_commit"},
+    {"id":"C06","claim":"queda depois do commit não duplica","evidence":"test_crash_after_commit"},
+    {"id":"C07","claim":"reconciliação detecta divergência","evidence":"test_reconciliation"}
+  ],
+  "not_proven": [
+    "autenticação e autorização de produção",
+    "backup externo",
+    "escala concorrente de produção",
+    "aceitação de cliente",
+    "homologação com ERP real"
+  ]
+}
