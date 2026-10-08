@@ -12,6 +12,7 @@ from .quickstart import create_quickstart
 from .conversation import conduct
 from .companion import write_packet
 from .author import conduct_author
+from .executor import ExecutionPolicy, execute, execution_plan
 
 
 def main() -> None:
@@ -68,6 +69,12 @@ def main() -> None:
     blueprint.add_argument("spec", type=Path)
     blueprint.add_argument("output", type=Path)
     blueprint.add_argument("--apply", action="store_true", help="escreve o blueprint compilado")
+
+    build = sub.add_parser("build", aliases=["executar"], help="materializa frontend, backend, testes e prova local")
+    build.add_argument("spec", type=Path)
+    build.add_argument("target")
+    build.add_argument("--apply", action="store_true", help="autoriza a escrita do projeto")
+    build.add_argument("--no-checks", action="store_true", help="não executar a prova local (não recomendado)")
 
     args = parser.parse_args()
     if args.command == "check":
@@ -128,6 +135,18 @@ def main() -> None:
             else:
                 print(f"Blueprint criado em: {write_blueprint(args.spec, args.output)}")
         except (OSError, json.JSONDecodeError, BlueprintError) as exc:
+            print(json.dumps({"ok": False, "error": str(exc)}, ensure_ascii=False))
+            raise SystemExit(1)
+    elif args.command in {"build", "executar"}:
+        try:
+            spec = json.loads(args.spec.read_text(encoding="utf-8"))
+            result = execute(spec, args.target, ExecutionPolicy(apply=args.apply, run_checks=not args.no_checks))
+            print(json.dumps(result, indent=2, ensure_ascii=False))
+            if not args.apply:
+                print("PLANO SOMENTE LEITURA: use --apply para materializar o software.")
+            elif not result.get("ok", False):
+                raise SystemExit(1)
+        except (OSError, json.JSONDecodeError, ValueError) as exc:
             print(json.dumps({"ok": False, "error": str(exc)}, ensure_ascii=False))
             raise SystemExit(1)
 

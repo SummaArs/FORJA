@@ -75,7 +75,7 @@ A FORJA fará perguntas em português, aceitará respostas naturais, mostrará o
 
 ```text
 FORJA PROOF: PASS
-checks=39 violations=0
+checks=42 violations=0
 ```
 
 ## Os cinco passos da FORJA
@@ -131,6 +131,22 @@ PYTHONPATH=. python3 -m forja_core blueprint \
 ```
 
 Veja [Blueprint empresarial e prova](docs/10-BLUEPRINT-EMPRESARIAL-E-PROVA.md).
+
+## Construir frontend e backend
+
+Depois de revisar uma especificação, mostre primeiro o plano:
+
+```bash
+PYTHONPATH=. python3 -m forja_core build examples/enterprise-spec-receivables.json /tmp/receivables
+```
+
+Quando estiver de acordo, autorize a materialização:
+
+```bash
+PYTHONPATH=. python3 -m forja_core build examples/enterprise-spec-receivables.json /tmp/receivables --apply
+```
+
+A FORJA cria um frontend responsivo, um backend local sem dependências pagas, contratos, testes, `run.sh` e relatório de limites. A prova é executada automaticamente; rede e instalação de pacotes ficam desativadas por padrão. Consulte [Executor conversacional](docs/14-EXECUTOR-CONVERSACIONAL.md).
 
 ## Companheira do Claude Code
 

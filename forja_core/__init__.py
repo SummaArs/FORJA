@@ -7,5 +7,6 @@ from .author import conduct_author, create_author_kit
 from .manifest import Artifact, ManifestError, validate_manifest
 from .quickstart import create_quickstart
 from .workspace import connect_repository, init_workspace, inspect_repository
+from .executor import ExecutionPolicy, execute, execution_plan
 
-__all__ = ["Artifact", "BlueprintError", "ManifestError", "build_packet", "build_spec", "choose_provider", "compile_blueprint", "conduct", "conduct_author", "connect_repository", "create_author_kit", "create_quickstart", "discover_providers", "init_workspace", "inspect_repository", "rank_files", "validate_manifest", "validate_spec", "write_blueprint", "write_packet"]
+__all__ = ["Artifact", "BlueprintError", "ExecutionPolicy", "ManifestError", "build_packet", "build_spec", "choose_provider", "compile_blueprint", "conduct", "conduct_author", "connect_repository", "create_author_kit", "create_quickstart", "discover_providers", "execute", "execution_plan", "init_workspace", "inspect_repository", "rank_files", "validate_manifest", "validate_spec", "write_blueprint", "write_packet"]
