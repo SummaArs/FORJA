@@ -9,6 +9,7 @@ from .workspace import connect_repository, init_workspace
 from .adapters import create_local, create_ooncore, create_odoo, plan
 from .blueprint import BlueprintError, compile_blueprint, write_blueprint
 from .quickstart import create_quickstart
+from .conversation import conduct
 
 
 def main() -> None:
@@ -28,6 +29,13 @@ def main() -> None:
     new.add_argument("--root", default=".")
     new.add_argument("--target", choices=["local", "ooncore", "odoo"], default="local")
     new.add_argument("--owner", default="Gustavo")
+
+    talk = sub.add_parser("conversar", aliases=["chat", "talk"], help="crie um sistema respondendo perguntas naturais")
+    talk.add_argument("--name", default=None, help="opcional; se faltar, a FORJA pergunta")
+    talk.add_argument("--root", default=".")
+    talk.add_argument("--target", choices=["local", "ooncore", "odoo"], default="local")
+    talk.add_argument("--owner", default="Gustavo")
+    talk.add_argument("--provider", choices=["auto", "ollama", "gemini", "aider", "opencode"], default="auto")
 
     connect = sub.add_parser("connect", help="conecta um repositório em modo somente leitura")
     connect.add_argument("--workspace", default=".")
@@ -64,6 +72,10 @@ def main() -> None:
         print(f"Agora abra: {result['requirements']}")
         print(f"Já deixei uma primeira planta em: {result['blueprint']}")
         print(f"Próximo passo: {result['next']}")
+    elif args.command in {"conversar", "chat", "talk"}:
+        result = conduct(args.name, args.target, args.owner, root=args.root, provider=args.provider)
+        if not result.get("ok", False):
+            raise SystemExit(1)
     elif args.command == "connect":
         record = connect_repository(args.workspace, args.repo, args.name)
         print(json.dumps(record, indent=2, ensure_ascii=False))

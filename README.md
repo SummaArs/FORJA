@@ -61,11 +61,21 @@ PYTHONPATH=. python3 -m forja_core new "Minha Loja" --target ooncore
 
 A FORJA cria a pasta, os requisitos e uma primeira planta verificável. Depois você só abre `requirements.json` e explica o que o sistema deve fazer.
 
+## Criar conversando
+
+Se você não quer escrever script ou JSON, use:
+
+```bash
+PYTHONPATH=. python3 -m forja_core conversar
+```
+
+A FORJA fará perguntas em português, aceitará respostas naturais, mostrará o que entendeu e só criará o projeto depois da sua confirmação. Ela procura ferramentas gratuitas como Ollama, Gemini CLI, Aider e OpenCode; se nenhuma estiver disponível, usa um assistente local determinístico sem enviar dados.
+
 ## Resultado esperado
 
 ```text
 FORJA PROOF: PASS
-checks=31 violations=0
+checks=35 violations=0
 ```
 
 ## Os cinco passos da FORJA
@@ -134,6 +144,7 @@ Veja [Blueprint empresarial e prova](docs/10-BLUEPRINT-EMPRESARIAL-E-PROVA.md).
 - [Adaptadores Local, OonCore e Odoo](docs/09-ADAPTADORES-LOCAL-OONCORE-ODOO.md)
 - [Criações reais da FORJA](examples/CREATIONS.md)
 - [Blueprint empresarial e prova](docs/10-BLUEPRINT-EMPRESARIAL-E-PROVA.md)
+- [Conversa natural e IA gratuita](docs/11-CONVERSA-NATURAL-E-IA-GRATUITA.md)
 - [Relatório da prova](evidence/first-proof.md)
 
 ## Status honesto

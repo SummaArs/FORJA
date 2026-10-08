@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.7.0 — conversa natural e IA gratuita
+
+- entrevista em português sem JSON ou script;
+- confirmação humana antes de criar arquivos;
+- detecção de Ollama, Gemini CLI, Aider e OpenCode;
+- fallback determinístico local quando nenhuma IA está instalada;
+- memória legível da conversa e requisitos compilados em blueprint.
+
 ## 0.6.0 — início rápido em uma frase
 
 - comando `forja_core new` para começar sem conhecer a arquitetura;
