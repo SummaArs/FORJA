@@ -75,7 +75,7 @@ A FORJA fará perguntas em português, aceitará respostas naturais, mostrará o
 
 ```text
 FORJA PROOF: PASS
-checks=35 violations=0
+checks=38 violations=0
 ```
 
 ## Os cinco passos da FORJA
@@ -132,6 +132,18 @@ PYTHONPATH=. python3 -m forja_core blueprint \
 
 Veja [Blueprint empresarial e prova](docs/10-BLUEPRINT-EMPRESARIAL-E-PROVA.md).
 
+## Companheira do Claude Code
+
+Para economizar contexto e tokens, prepare apenas os arquivos relevantes:
+
+```bash
+PYTHONPATH=. python3 -m forja_core companheiro \
+  "corrigir o fluxo de pagamentos e adicionar testes" \
+  --repo ./meu-projeto
+```
+
+A FORJA cria `.forja/companion/CLAUDE_CONTEXT.md` com seleção de arquivos, estado Git, restrições e comando de prova. O Claude Code recebe esse pacote em vez do repositório inteiro. Veja [Companheiro Claude Code e tokens](docs/12-COMPANHEIRO-CLAUDE-CODE-E-TOKENS.md).
+
 ## Documentação
 
 - [Método FORJA](docs/01-METODO-FORJA.md)
@@ -145,6 +157,7 @@ Veja [Blueprint empresarial e prova](docs/10-BLUEPRINT-EMPRESARIAL-E-PROVA.md).
 - [Criações reais da FORJA](examples/CREATIONS.md)
 - [Blueprint empresarial e prova](docs/10-BLUEPRINT-EMPRESARIAL-E-PROVA.md)
 - [Conversa natural e IA gratuita](docs/11-CONVERSA-NATURAL-E-IA-GRATUITA.md)
+- [Companheiro Claude Code e tokens](docs/12-COMPANHEIRO-CLAUDE-CODE-E-TOKENS.md)
 - [Relatório da prova](evidence/first-proof.md)
 
 ## Status honesto

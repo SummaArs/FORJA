@@ -10,6 +10,7 @@ from .adapters import create_local, create_ooncore, create_odoo, plan
 from .blueprint import BlueprintError, compile_blueprint, write_blueprint
 from .quickstart import create_quickstart
 from .conversation import conduct
+from .companion import write_packet
 
 
 def main() -> None:
@@ -36,6 +37,13 @@ def main() -> None:
     talk.add_argument("--target", choices=["local", "ooncore", "odoo"], default="local")
     talk.add_argument("--owner", default="Gustavo")
     talk.add_argument("--provider", choices=["auto", "ollama", "gemini", "aider", "opencode"], default="auto")
+
+    companion = sub.add_parser("companheiro", aliases=["contexto", "claude"], help="prepara somente o contexto necessário para um agente de código")
+    companion.add_argument("task", help="o que você quer mudar, em linguagem natural")
+    companion.add_argument("--repo", default=".")
+    companion.add_argument("--out", default=".forja/companion")
+    companion.add_argument("--budget", type=int, default=12000, help="limite aproximado de caracteres do contexto")
+    companion.add_argument("--files", type=int, default=18)
 
     connect = sub.add_parser("connect", help="conecta um repositório em modo somente leitura")
     connect.add_argument("--workspace", default=".")
@@ -76,6 +84,12 @@ def main() -> None:
         result = conduct(args.name, args.target, args.owner, root=args.root, provider=args.provider)
         if not result.get("ok", False):
             raise SystemExit(1)
+    elif args.command in {"companheiro", "contexto", "claude"}:
+        packet = write_packet(args.repo, args.task, args.out, args.budget, args.files)
+        selection = packet["selection"]
+        print(f"Contexto pronto: {Path(args.out).resolve() / 'CLAUDE_CONTEXT.md'}")
+        print(f"Arquivos incluídos: {selection['included']} | caracteres usados: {selection['used_chars']} | redução estimada: {selection['estimated_reduction']:.1%}")
+        print("Abra CLAUDE_CONTEXT.md no agente. A FORJA preparou o contexto; o agente deve executar a prova depois.")
     elif args.command == "connect":
         record = connect_repository(args.workspace, args.repo, args.name)
         print(json.dumps(record, indent=2, ensure_ascii=False))

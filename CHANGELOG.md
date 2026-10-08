@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.8.0 — companheiro de contexto para agentes
+
+- seleção de arquivos por tarefa em vez de enviar o repositório inteiro;
+- orçamento explícito e fingerprint do handoff;
+- exclusão de caches, dependências e documentos gerados;
+- limite por arquivo para evitar que um artefato monopolize o contexto;
+- estado Git e regras de prova no `CLAUDE_CONTEXT.md`.
+
 ## 0.7.0 — conversa natural e IA gratuita
 
 - entrevista em português sem JSON ou script;
