@@ -1,6 +1,6 @@
 {
   "project": "forja-ledger",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "claims": [
     {"id":"C01","claim":"lançamento válido é persistido","evidence":"test_valid_entry"},
     {"id":"C02","claim":"valor negativo é rejeitado","evidence":"test_negative_amount"},
@@ -8,7 +8,10 @@
     {"id":"C04","claim":"auditoria é criada","evidence":"test_audit_trail"},
     {"id":"C05","claim":"queda antes do commit não grava","evidence":"test_crash_before_commit"},
     {"id":"C06","claim":"queda depois do commit não duplica","evidence":"test_crash_after_commit"},
-    {"id":"C07","claim":"reconciliação detecta divergência","evidence":"test_reconciliation"}
+    {"id":"C07","claim":"reconciliação detecta divergência","evidence":"test_reconciliation"},
+    {"id":"C08","claim":"qualquer artefato empresarial pode ser governado por manifesto","evidence":"tests/test_manifest.py"},
+    {"id":"C09","claim":"artefato validado sem evidência é bloqueado","evidence":"test_validated_without_evidence_is_blocked"},
+    {"id":"C10","claim":"artefato de alto risco sem gatilho é bloqueado","evidence":"test_high_risk_without_reopening_trigger_is_blocked"}
   ],
   "not_proven": [
     "autenticação e autorização de produção",

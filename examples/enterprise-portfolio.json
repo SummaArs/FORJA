@@ -1,0 +1,44 @@
+{
+  "portfolio": "FORJA enterprise portfolio",
+  "artifacts": [
+    {
+      "id": "ledger-demo",
+      "name": "Forja Ledger",
+      "kind": "software",
+      "purpose": "Registrar lançamentos empresariais sem duplicidade",
+      "owner": "Gustavo",
+      "risk": "medium",
+      "state": "validated",
+      "claims": ["replay da mesma intenção não cria duplicidade", "reconciliação detecta divergência"],
+      "evidence": ["./prove.sh", "tests/test_ledger.py"],
+      "reopening_triggers": ["mudança de esquema", "falha de reconciliação"],
+      "not_proven": ["produção", "cliente real", "escala concorrente"]
+    },
+    {
+      "id": "switchpay-v2",
+      "name": "Central de recebimentos",
+      "kind": "process",
+      "purpose": "Conferir recebimento e integração financeira",
+      "owner": "Gustavo",
+      "risk": "high",
+      "state": "experiment",
+      "claims": ["cada recebimento pode ser reconciliado na fonte"],
+      "evidence": ["ensaio ponta a ponta pendente"],
+      "reopening_triggers": ["mudança no provedor", "evento fora de ordem", "divergência financeira"],
+      "not_proven": ["aceitação do cliente", "fechamento mensal em paralelo"]
+    },
+    {
+      "id": "the-eye-method",
+      "name": "Diagnóstico de maturidade",
+      "kind": "product",
+      "purpose": "Orientar melhoria operacional de empresas",
+      "owner": "Gustavo",
+      "risk": "medium",
+      "state": "hypothesis",
+      "claims": ["o diagnóstico produz prioridades úteis para o operador"],
+      "evidence": [],
+      "reopening_triggers": ["feedback de operadores", "mudança da taxonomia"],
+      "not_proven": ["validade estatística da mediana"]
+    }
+  ]
+}

@@ -1,10 +1,10 @@
 # FORJA
 
-## Construir software empresarial confiável com lógica, provas e custo zero
+## Criar e operar qualquer artefato empresarial com lógica, provas e custo zero
 
-A **FORJA** é um método prático para criar software empresarial melhor, mais confiável e mais econômico usando apenas ferramentas gratuitas ou open source.
+A **FORJA** é um sistema operacional de criação empresarial. Ela começou como um método para criar software confiável e agora governa qualquer artefato que possa sustentar uma decisão: software, processo, produto, documento, política, operação, análise, experimento ou decisão.
 
-Ela transforma uma ideia em um sistema que pode responder, com evidência:
+Ela transforma uma ideia em um resultado que pode responder, com evidência:
 
 - o que o software afirma;
 - o que pode dar errado;
@@ -13,6 +13,8 @@ Ela transforma uma ideia em um sistema que pode responder, com evidência:
 - como ele recupera depois de cair;
 - como outra pessoa reproduz a prova;
 - o que ainda **não** foi verificado.
+
+O mesmo contrato serve para um sistema financeiro, um processo de atendimento, um produto de diagnóstico, uma política de aprovação, uma migração, um relatório ou um experimento.
 
 > **A FORJA não promete que toda IA gratuita substitui um engenheiro. Ela cria um processo que impede que a IA esconda incerteza.**
 
@@ -55,7 +57,7 @@ python3 -m forja_ledger demo
 
 ```text
 FORJA PROOF: PASS
-checks=12 violations=0
+checks=17 violations=0
 ```
 
 ## Os cinco passos da FORJA
@@ -66,6 +68,14 @@ checks=12 violations=0
 4. **Atacar** — plantar defeitos, simular queda, duplicidade, atraso e dados inválidos.
 5. **Reconferir** — comparar o resultado com a fonte da verdade, publicar limites e só então evoluir.
 
+## Enterprise OS
+
+```bash
+PYTHONPATH=. python3 -m forja_core check examples/enterprise-portfolio.json
+```
+
+O manifesto universal bloqueia artefatos validados sem evidência e artefatos de alto risco sem gatilho de reabertura. Veja [FORJA Enterprise OS](docs/07-ENTERPRISE-OS.md).
+
 ## Documentação
 
 - [Método FORJA](docs/01-METODO-FORJA.md)
@@ -74,17 +84,20 @@ checks=12 violations=0
 - [Criação de software incorporada](docs/04-CRIACAO-DE-SOFTWARE.md)
 - [Stack 100% gratuita](docs/05-STACK-GRATUITA.md)
 - [Protocolo empresarial](docs/06-PROTOCOLO-EMPRESARIAL.md)
+- [FORJA Enterprise OS](docs/07-ENTERPRISE-OS.md)
 - [Relatório da prova](evidence/first-proof.md)
 
 ## Status honesto
 
-**MVP educacional validado localmente.** Ele não é ainda um ERP, não foi homologado em ambiente de cliente e não deve receber dados reais sem revisão, backup, autenticação e implantação apropriada.
+**Núcleo educacional validado localmente.** O Forja Ledger não é ainda um ERP, não foi homologado em ambiente de cliente e não deve receber dados reais sem revisão, backup, autenticação e implantação apropriada. O Enterprise OS governa artefatos; ele não transforma automaticamente uma hipótese em negócio validado.
 
 A FORJA mede progresso por evidência, não por quantidade de arquivos:
 
 - Definição: 100%
 - Exemplo executável: 100%
-- Prova local: será registrada após execução
+- Governança universal local: 100%
+- Prova local: 100%
+- Governança universal local: será registrada após a prova
 - Produção empresarial: 0% até homologação real
 
 ## Licença
