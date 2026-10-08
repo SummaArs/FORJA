@@ -8,6 +8,7 @@ from .manifest import validate_manifest
 from .workspace import connect_repository, init_workspace
 from .adapters import create_local, create_ooncore, create_odoo, plan
 from .blueprint import BlueprintError, compile_blueprint, write_blueprint
+from .quickstart import create_quickstart
 
 
 def main() -> None:
@@ -21,6 +22,12 @@ def main() -> None:
     init.add_argument("path", nargs="?", default=".")
     init.add_argument("--name", default="novo-projeto")
     init.add_argument("--owner", default="meu-nome")
+
+    new = sub.add_parser("new", help="comece um sistema com uma frase simples")
+    new.add_argument("name", help="nome do sistema, por exemplo: Minha Loja")
+    new.add_argument("--root", default=".")
+    new.add_argument("--target", choices=["local", "ooncore", "odoo"], default="local")
+    new.add_argument("--owner", default="Gustavo")
 
     connect = sub.add_parser("connect", help="conecta um repositório em modo somente leitura")
     connect.add_argument("--workspace", default=".")
@@ -51,6 +58,12 @@ def main() -> None:
         location = init_workspace(args.path, args.name, args.owner)
         print(f"Projeto preparado em: {location}")
         print("Próxima pergunta: Qual problema empresarial precisa mudar?")
+    elif args.command == "new":
+        result = create_quickstart(args.name, args.root, args.target, args.owner)
+        print(f"Pronto! Criei: {result['project']}")
+        print(f"Agora abra: {result['requirements']}")
+        print(f"Já deixei uma primeira planta em: {result['blueprint']}")
+        print(f"Próximo passo: {result['next']}")
     elif args.command == "connect":
         record = connect_repository(args.workspace, args.repo, args.name)
         print(json.dumps(record, indent=2, ensure_ascii=False))

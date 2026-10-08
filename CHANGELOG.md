@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.6.0 — início rápido em uma frase
+
+- comando `forja_core new` para começar sem conhecer a arquitetura;
+- criação automática de projeto, requisitos, README e blueprint inicial;
+- prova de que a simplicidade da interface preserva os gates enterprise.
+
 ## 0.5.0 — compilador de blueprint empresarial
 
 - especificação de domínio com atores, entidades, jornadas, risco e controles;

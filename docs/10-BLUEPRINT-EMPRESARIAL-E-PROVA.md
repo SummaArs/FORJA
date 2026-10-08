@@ -14,6 +14,14 @@ Isso não é uma alegação de SOTA universal. É uma implementação **SOTA-ori
 
 ## Uso
 
+Para começar como uma criança, use uma frase:
+
+```bash
+PYTHONPATH=. python3 -m forja_core new "Minha Loja" --target ooncore
+```
+
+A FORJA cria a pasta, um `requirements.json` editável, um README e um blueprint inicial. Você só precisa abrir os requisitos e contar o que o sistema deve fazer.
+
 Verifique o plano sem escrever:
 
 ```bash

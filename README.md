@@ -53,11 +53,19 @@ python3 -m unittest discover -s tests -v
 python3 -m forja_ledger demo
 ```
 
+Para criar um sistema novo com uma frase:
+
+```bash
+PYTHONPATH=. python3 -m forja_core new "Minha Loja" --target ooncore
+```
+
+A FORJA cria a pasta, os requisitos e uma primeira planta verificável. Depois você só abre `requirements.json` e explica o que o sistema deve fazer.
+
 ## Resultado esperado
 
 ```text
 FORJA PROOF: PASS
-checks=29 violations=0
+checks=31 violations=0
 ```
 
 ## Os cinco passos da FORJA
