@@ -57,7 +57,7 @@ python3 -m forja_ledger demo
 
 ```text
 FORJA PROOF: PASS
-checks=24 violations=0
+checks=29 violations=0
 ```
 
 ## Os cinco passos da FORJA
@@ -102,6 +102,18 @@ PYTHONPATH=. python3 -m forja_core create odoo ./addons/cliente --name "Cliente"
 
 Sem `--apply`, a FORJA apenas mostra o plano. Consulte [os adaptadores Local, OonCore e Odoo](docs/09-ADAPTADORES-LOCAL-OONCORE-ODOO.md).
 
+## Compilar um sistema empresarial
+
+A FORJA também compila uma especificação de negócio em contratos de frontend, backend, governança e aceitação:
+
+```bash
+PYTHONPATH=. python3 -m forja_core blueprint \
+  examples/enterprise-spec-receivables.json \
+  examples/generated/receivables --apply
+```
+
+Veja [Blueprint empresarial e prova](docs/10-BLUEPRINT-EMPRESARIAL-E-PROVA.md).
+
 ## Documentação
 
 - [Método FORJA](docs/01-METODO-FORJA.md)
@@ -113,6 +125,7 @@ Sem `--apply`, a FORJA apenas mostra o plano. Consulte [os adaptadores Local, Oo
 - [FORJA Enterprise OS](docs/07-ENTERPRISE-OS.md)
 - [Adaptadores Local, OonCore e Odoo](docs/09-ADAPTADORES-LOCAL-OONCORE-ODOO.md)
 - [Criações reais da FORJA](examples/CREATIONS.md)
+- [Blueprint empresarial e prova](docs/10-BLUEPRINT-EMPRESARIAL-E-PROVA.md)
 - [Relatório da prova](evidence/first-proof.md)
 
 ## Status honesto

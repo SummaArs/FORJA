@@ -1,0 +1,18 @@
+{
+  "journeys": [
+    "register_invoice",
+    "reconcile_payment",
+    "inspect_audit"
+  ],
+  "required_checks": [
+    "schema",
+    "authorization",
+    "validation",
+    "audit",
+    "recovery"
+  ],
+  "not_proven": [
+    "production deployment",
+    "customer acceptance"
+  ]
+}

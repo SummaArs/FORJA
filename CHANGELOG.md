@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.0 — compilador de blueprint empresarial
+
+- especificação de domínio com atores, entidades, jornadas, risco e controles;
+- compilação determinística para contratos de frontend, backend, governança e aceitação;
+- gates adversariais contra atores ausentes, entidades duplicadas e alto risco sem controles;
+- caso real de Contas a Receber materializado e validado.
+
 ## 0.4.0 — adaptadores de criação
 
 - criação local guiada;

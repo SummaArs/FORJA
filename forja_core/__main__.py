@@ -7,6 +7,7 @@ from pathlib import Path
 from .manifest import validate_manifest
 from .workspace import connect_repository, init_workspace
 from .adapters import create_local, create_ooncore, create_odoo, plan
+from .blueprint import BlueprintError, compile_blueprint, write_blueprint
 
 
 def main() -> None:
@@ -33,6 +34,11 @@ def main() -> None:
     create.add_argument("--owner", default="Gustavo")
     create.add_argument("--apply", action="store_true", help="escreve arquivos; sem isso apenas mostra o plano")
     create.add_argument("--ooncore-version", default="0.7.8")
+
+    blueprint = sub.add_parser("blueprint", help="compila requisitos em front, back, governança e aceitação")
+    blueprint.add_argument("spec", type=Path)
+    blueprint.add_argument("output", type=Path)
+    blueprint.add_argument("--apply", action="store_true", help="escreve o blueprint compilado")
 
     args = parser.parse_args()
     if args.command == "check":
@@ -62,6 +68,18 @@ def main() -> None:
             result = create_odoo(args.target, args.name, apply=True)
         print(json.dumps(result, indent=2, ensure_ascii=False))
         if not result.get("ok", True):
+            raise SystemExit(1)
+    elif args.command == "blueprint":
+        try:
+            if not args.apply:
+                spec = json.loads(args.spec.read_text(encoding="utf-8"))
+                result = compile_blueprint(spec)
+                print(json.dumps({"ok": True, "schema": result["schema"], "target": result["identity"]["target"], "routes": len(result["frontend"]["routes"]), "models": len(result["backend"]["models"])}, indent=2, ensure_ascii=False))
+                print("PLANO SOMENTE LEITURA: use --apply para materializar o blueprint.")
+            else:
+                print(f"Blueprint criado em: {write_blueprint(args.spec, args.output)}")
+        except (OSError, json.JSONDecodeError, BlueprintError) as exc:
+            print(json.dumps({"ok": False, "error": str(exc)}, ensure_ascii=False))
             raise SystemExit(1)
 
 

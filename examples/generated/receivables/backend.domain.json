@@ -1,0 +1,9 @@
+{
+  "models": [
+    "customer",
+    "invoice",
+    "payment"
+  ],
+  "validation_required": true,
+  "authorization_required": true
+}

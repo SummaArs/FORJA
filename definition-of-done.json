@@ -1,6 +1,6 @@
 {
   "project": "forja-ledger",
-  "version": "0.2.0",
+  "version": "0.5.0",
   "claims": [
     {"id":"C01","claim":"lançamento válido é persistido","evidence":"test_valid_entry"},
     {"id":"C02","claim":"valor negativo é rejeitado","evidence":"test_negative_amount"},
@@ -11,7 +11,12 @@
     {"id":"C07","claim":"reconciliação detecta divergência","evidence":"test_reconciliation"},
     {"id":"C08","claim":"qualquer artefato empresarial pode ser governado por manifesto","evidence":"tests/test_manifest.py"},
     {"id":"C09","claim":"artefato validado sem evidência é bloqueado","evidence":"test_validated_without_evidence_is_blocked"},
-    {"id":"C10","claim":"artefato de alto risco sem gatilho é bloqueado","evidence":"test_high_risk_without_reopening_trigger_is_blocked"}
+    {"id":"C10","claim":"artefato de alto risco sem gatilho é bloqueado","evidence":"test_high_risk_without_reopening_trigger_is_blocked"},
+    {"id":"C11","claim":"especificação enterprise compila contratos de front, back e governança","evidence":"test_real_enterprise_spec_compiles_into_front_back_and_governance"},
+    {"id":"C12","claim":"sistema de alto risco sem controles explícitos é bloqueado","evidence":"test_high_risk_without_controls_is_blocked"},
+    {"id":"C13","claim":"jornada com ator não declarado é bloqueada","evidence":"test_undeclared_actor_is_blocked"},
+    {"id":"C14","claim":"entidades duplicadas são bloqueadas","evidence":"test_duplicate_entity_is_blocked"},
+    {"id":"C15","claim":"blueprint completo é reproduzível e separado por contrato","evidence":"test_output_is_reproducible_and_complete"}
   ],
   "not_proven": [
     "autenticação e autorização de produção",

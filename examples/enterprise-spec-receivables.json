@@ -1,0 +1,19 @@
+{
+  "id": "acme-receivables",
+  "name": "Acme Contas a Receber",
+  "purpose": "Controlar cobranças, recebimentos e reconciliação de clientes.",
+  "target": "ooncore",
+  "risk": "high",
+  "actors": ["operator", "manager", "auditor"],
+  "entities": [
+    {"id": "customer", "fields": ["name", "tax_id", "status"]},
+    {"id": "invoice", "fields": ["customer_id", "amount_cents", "due_date", "status"]},
+    {"id": "payment", "fields": ["invoice_id", "amount_cents", "received_at", "source_key"]}
+  ],
+  "journeys": [
+    {"id": "register_invoice", "actor": "operator", "steps": ["validate customer", "create invoice", "audit event"]},
+    {"id": "reconcile_payment", "actor": "manager", "steps": ["validate source key", "reconcile amount", "commit idempotently", "audit event"]},
+    {"id": "inspect_audit", "actor": "auditor", "steps": ["filter events", "export evidence"]}
+  ],
+  "controls": ["deny by default RBAC", "idempotency key and audit trail", "reconciliation before settlement"]
+}

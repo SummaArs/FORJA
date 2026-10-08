@@ -1,0 +1,151 @@
+{
+  "schema": "forja.enterprise.blueprint/v1",
+  "identity": {
+    "id": "acme-receivables",
+    "name": "Acme Contas a Receber",
+    "purpose": "Controlar cobranças, recebimentos e reconciliação de clientes.",
+    "target": "ooncore"
+  },
+  "risk": {
+    "level": "high",
+    "controls": [
+      "deny by default RBAC",
+      "idempotency key and audit trail",
+      "reconciliation before settlement"
+    ]
+  },
+  "domain": {
+    "entities": [
+      {
+        "id": "customer",
+        "fields": [
+          "name",
+          "tax_id",
+          "status"
+        ]
+      },
+      {
+        "id": "invoice",
+        "fields": [
+          "customer_id",
+          "amount_cents",
+          "due_date",
+          "status"
+        ]
+      },
+      {
+        "id": "payment",
+        "fields": [
+          "invoice_id",
+          "amount_cents",
+          "received_at",
+          "source_key"
+        ]
+      }
+    ],
+    "journeys": [
+      {
+        "id": "register_invoice",
+        "actor": "operator",
+        "steps": [
+          "validate customer",
+          "create invoice",
+          "audit event"
+        ]
+      },
+      {
+        "id": "reconcile_payment",
+        "actor": "manager",
+        "steps": [
+          "validate source key",
+          "reconcile amount",
+          "commit idempotently",
+          "audit event"
+        ]
+      },
+      {
+        "id": "inspect_audit",
+        "actor": "auditor",
+        "steps": [
+          "filter events",
+          "export evidence"
+        ]
+      }
+    ]
+  },
+  "frontend": {
+    "routes": [
+      {
+        "path": "/register_invoice",
+        "journey": "register_invoice",
+        "actor": "operator"
+      },
+      {
+        "path": "/reconcile_payment",
+        "journey": "reconcile_payment",
+        "actor": "manager"
+      },
+      {
+        "path": "/inspect_audit",
+        "journey": "inspect_audit",
+        "actor": "auditor"
+      }
+    ],
+    "component_boundaries": [
+      "features/register_invoice",
+      "features/reconcile_payment",
+      "features/inspect_audit"
+    ]
+  },
+  "backend": {
+    "models": [
+      "customer",
+      "invoice",
+      "payment"
+    ],
+    "validation_required": true,
+    "authorization_required": true
+  },
+  "governance": {
+    "actors": [
+      "operator",
+      "manager",
+      "auditor"
+    ],
+    "permissions": {
+      "operator": [
+        "register_invoice:execute"
+      ],
+      "manager": [
+        "reconcile_payment:execute"
+      ],
+      "auditor": [
+        "inspect_audit:execute"
+      ]
+    },
+    "deny_by_default": true,
+    "audit_events": [
+      "register_invoice.completed",
+      "reconcile_payment.completed",
+      "inspect_audit.completed"
+    ]
+  },
+  "acceptance": {
+    "journeys": [
+      "register_invoice",
+      "reconcile_payment",
+      "inspect_audit"
+    ],
+    "required_checks": [
+      "schema",
+      "authorization",
+      "validation",
+      "audit",
+      "recovery"
+    ],
+    "not_proven": [
+      "production deployment",
+      "customer acceptance"
+    ]
+  }
+}

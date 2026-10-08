@@ -1,0 +1,24 @@
+{
+  "routes": [
+    {
+      "path": "/register_invoice",
+      "journey": "register_invoice",
+      "actor": "operator"
+    },
+    {
+      "path": "/reconcile_payment",
+      "journey": "reconcile_payment",
+      "actor": "manager"
+    },
+    {
+      "path": "/inspect_audit",
+      "journey": "inspect_audit",
+      "actor": "auditor"
+    }
+  ],
+  "component_boundaries": [
+    "features/register_invoice",
+    "features/reconcile_payment",
+    "features/inspect_audit"
+  ]
+}
