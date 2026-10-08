@@ -11,6 +11,7 @@ from .blueprint import BlueprintError, compile_blueprint, write_blueprint
 from .quickstart import create_quickstart
 from .conversation import conduct
 from .companion import write_packet
+from .author import conduct_author
 
 
 def main() -> None:
@@ -44,6 +45,11 @@ def main() -> None:
     companion.add_argument("--out", default=".forja/companion")
     companion.add_argument("--budget", type=int, default=12000, help="limite aproximado de caracteres do contexto")
     companion.add_argument("--files", type=int, default=18)
+
+    author = sub.add_parser("autor", aliases=["aprender", "construir"], help="organiza você para construir o software passo a passo")
+    author.add_argument("--root", default=".")
+    author.add_argument("--target", choices=["local", "ooncore", "odoo"], default="local")
+    author.add_argument("--owner", default="Gustavo")
 
     connect = sub.add_parser("connect", help="conecta um repositório em modo somente leitura")
     connect.add_argument("--workspace", default=".")
@@ -90,6 +96,10 @@ def main() -> None:
         print(f"Contexto pronto: {Path(args.out).resolve() / 'CLAUDE_CONTEXT.md'}")
         print(f"Arquivos incluídos: {selection['included']} | caracteres usados: {selection['used_chars']} | redução estimada: {selection['estimated_reduction']:.1%}")
         print("Abra CLAUDE_CONTEXT.md no agente. A FORJA preparou o contexto; o agente deve executar a prova depois.")
+    elif args.command in {"autor", "aprender", "construir"}:
+        result = conduct_author(root=args.root, owner=args.owner, target=args.target)
+        if not result.get("ok", False):
+            raise SystemExit(1)
     elif args.command == "connect":
         record = connect_repository(args.workspace, args.repo, args.name)
         print(json.dumps(record, indent=2, ensure_ascii=False))

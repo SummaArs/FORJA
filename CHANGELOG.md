@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.9.0 — modo Autor
+
+- fluxo principal para o usuário construir o software por conta própria;
+- kit de visão, requisitos, blueprint e diário de construção;
+- `NEXT_STEP.md` com uma única tarefa didática;
+- teste antes do código e prova depois do código;
+- a FORJA não gera o produto no lugar do autor.
+
 ## 0.8.0 — companheiro de contexto para agentes
 
 - seleção de arquivos por tarefa em vez de enviar o repositório inteiro;

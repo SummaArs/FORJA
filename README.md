@@ -75,7 +75,7 @@ A FORJA fará perguntas em português, aceitará respostas naturais, mostrará o
 
 ```text
 FORJA PROOF: PASS
-checks=38 violations=0
+checks=39 violations=0
 ```
 
 ## Os cinco passos da FORJA
@@ -144,6 +144,16 @@ PYTHONPATH=. python3 -m forja_core companheiro \
 
 A FORJA cria `.forja/companion/CLAUDE_CONTEXT.md` com seleção de arquivos, estado Git, restrições e comando de prova. O Claude Code recebe esse pacote em vez do repositório inteiro. Veja [Companheiro Claude Code e tokens](docs/12-COMPANHEIRO-CLAUDE-CODE-E-TOKENS.md).
 
+## Criar por conta própria
+
+Se o objetivo é você aprender e construir o software, use o modo Autor:
+
+```bash
+PYTHONPATH=. python3 -m forja_core autor
+```
+
+A FORJA faz perguntas, cria a visão, o blueprint e um `NEXT_STEP.md` com uma única tarefa. Ela não escreve o produto no seu lugar: você implementa, testa e aprende; a FORJA organiza e verifica. Veja [Modo Autor e aprendizado](docs/13-MODO-AUTOR-E-APRENDIZADO.md).
+
 ## Documentação
 
 - [Método FORJA](docs/01-METODO-FORJA.md)
@@ -158,6 +168,7 @@ A FORJA cria `.forja/companion/CLAUDE_CONTEXT.md` com seleção de arquivos, est
 - [Blueprint empresarial e prova](docs/10-BLUEPRINT-EMPRESARIAL-E-PROVA.md)
 - [Conversa natural e IA gratuita](docs/11-CONVERSA-NATURAL-E-IA-GRATUITA.md)
 - [Companheiro Claude Code e tokens](docs/12-COMPANHEIRO-CLAUDE-CODE-E-TOKENS.md)
+- [Modo Autor e aprendizado](docs/13-MODO-AUTOR-E-APRENDIZADO.md)
 - [Relatório da prova](evidence/first-proof.md)
 
 ## Status honesto
