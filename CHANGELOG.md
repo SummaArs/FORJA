@@ -7,6 +7,14 @@
 - portfólio empresarial de exemplo;
 - prova ampliada para 14 testes e manifesto válido.
 
+## 0.3.0 — fluxo natural e conector OonCore
+
+- comando guiado `init` para iniciar clientes sem decorar a arquitetura;
+- comando `connect` em modo somente leitura para caminho local ou URL;
+- descoberta segura de README, Git, instruções, provas e testes;
+- nenhum script do repositório conectado é executado;
+- documentação do próximo passo de compatibilidade OonCore.
+
 ## 0.1.0 — primeira forja
 
 - método FORJA documentado;

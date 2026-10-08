@@ -76,6 +76,22 @@ PYTHONPATH=. python3 -m forja_core check examples/enterprise-portfolio.json
 
 O manifesto universal bloqueia artefatos validados sem evidência e artefatos de alto risco sem gatilho de reabertura. Veja [FORJA Enterprise OS](docs/07-ENTERPRISE-OS.md).
 
+## Uso natural
+
+Para começar um cliente novo sem decorar a arquitetura:
+
+```bash
+PYTHONPATH=. python3 -m forja_core init ./cliente-acme --name "Acme" --owner Gustavo
+```
+
+Para conectar um OonCore existente, a FORJA aceita um caminho local ou URL e faz apenas descoberta de leitura:
+
+```bash
+PYTHONPATH=. python3 -m forja_core connect --workspace ./cliente-acme --repo /caminho/para/ooncore --name ooncore
+```
+
+Veja o [guia natural e OonCore](docs/08-USO-NATURAL-E-OONCORE.md). O repositório correto do OonCore ainda precisa ser informado; a FORJA não inventa origem, versão ou permissões.
+
 ## Documentação
 
 - [Método FORJA](docs/01-METODO-FORJA.md)

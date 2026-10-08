@@ -12,6 +12,7 @@ Leia `README.md` e `docs/01-METODO-FORJA.md` antes de editar.
 6. preservar a lista `not_proven`;
 7. executar `git diff --check` antes de concluir;
 8. fazer commits pequenos e explicáveis.
+9. conexão OonCore começa em somente leitura; não executar scripts externos sem autorização explícita.
 
 ## Modo recomendado
 
