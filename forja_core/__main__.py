@@ -6,6 +6,7 @@ from pathlib import Path
 
 from .manifest import validate_manifest
 from .workspace import connect_repository, init_workspace
+from .adapters import create_local, create_ooncore, create_odoo, plan
 
 
 def main() -> None:
@@ -25,6 +26,14 @@ def main() -> None:
     connect.add_argument("--repo", required=True, help="caminho local ou URL do repositório")
     connect.add_argument("--name", default="ooncore")
 
+    create = sub.add_parser("create", help="cria um projeto local, OonCore ou addon Odoo")
+    create.add_argument("kind", choices=["local", "ooncore", "odoo"])
+    create.add_argument("target")
+    create.add_argument("--name", default="novo-projeto")
+    create.add_argument("--owner", default="Gustavo")
+    create.add_argument("--apply", action="store_true", help="escreve arquivos; sem isso apenas mostra o plano")
+    create.add_argument("--ooncore-version", default="0.7.8")
+
     args = parser.parse_args()
     if args.command == "check":
         result = validate_manifest(args.manifest)
@@ -40,6 +49,20 @@ def main() -> None:
         record = connect_repository(args.workspace, args.repo, args.name)
         print(json.dumps(record, indent=2, ensure_ascii=False))
         print("Conexão registrada em modo somente leitura; nenhum arquivo do repositório foi alterado.")
+    elif args.command == "create":
+        if not args.apply:
+            print(json.dumps(plan(args.kind, args.target, args.name), indent=2, ensure_ascii=False))
+            print("PLANO SOMENTE LEITURA: use --apply para criar arquivos.")
+            return
+        if args.kind == "local":
+            result = create_local(args.target, args.name, args.owner)
+        elif args.kind == "ooncore":
+            result = create_ooncore(args.target, args.name, args.ooncore_version, apply=True)
+        else:
+            result = create_odoo(args.target, args.name, apply=True)
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+        if not result.get("ok", True):
+            raise SystemExit(1)
 
 
 if __name__ == "__main__":

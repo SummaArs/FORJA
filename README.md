@@ -57,7 +57,7 @@ python3 -m forja_ledger demo
 
 ```text
 FORJA PROOF: PASS
-checks=17 violations=0
+checks=21 violations=0
 ```
 
 ## Os cinco passos da FORJA
@@ -92,6 +92,16 @@ PYTHONPATH=. python3 -m forja_core connect --workspace ./cliente-acme --repo /ca
 
 Veja o [guia natural e OonCore](docs/08-USO-NATURAL-E-OONCORE.md). O repositório correto do OonCore ainda precisa ser informado; a FORJA não inventa origem, versão ou permissões.
 
+## Criar de verdade: três destinos
+
+```bash
+PYTHONPATH=. python3 -m forja_core create local ./cliente --name "Cliente" --apply
+PYTHONPATH=. python3 -m forja_core create ooncore ./cliente-central --name "Cliente Central" --apply
+PYTHONPATH=. python3 -m forja_core create odoo ./addons/cliente --name "Cliente" --apply
+```
+
+Sem `--apply`, a FORJA apenas mostra o plano. Consulte [os adaptadores Local, OonCore e Odoo](docs/09-ADAPTADORES-LOCAL-OONCORE-ODOO.md).
+
 ## Documentação
 
 - [Método FORJA](docs/01-METODO-FORJA.md)
@@ -101,6 +111,7 @@ Veja o [guia natural e OonCore](docs/08-USO-NATURAL-E-OONCORE.md). O repositóri
 - [Stack 100% gratuita](docs/05-STACK-GRATUITA.md)
 - [Protocolo empresarial](docs/06-PROTOCOLO-EMPRESARIAL.md)
 - [FORJA Enterprise OS](docs/07-ENTERPRISE-OS.md)
+- [Adaptadores Local, OonCore e Odoo](docs/09-ADAPTADORES-LOCAL-OONCORE-ODOO.md)
 - [Relatório da prova](evidence/first-proof.md)
 
 ## Status honesto

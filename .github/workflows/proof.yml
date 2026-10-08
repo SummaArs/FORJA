@@ -21,3 +21,5 @@ jobs:
         run: python -m compileall -q forja_ledger tests
       - name: Validate enterprise portfolio
         run: PYTHONPATH=. python -m forja_core check examples/enterprise-portfolio.json
+      - name: Compile adapter sources
+        run: python -m compileall -q forja_core tests

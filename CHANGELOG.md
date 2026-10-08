@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.4.0 — adaptadores de criação
+
+- criação local guiada;
+- scaffold oficial OonCore com versão fixa e plano antes de aplicar;
+- scaffold de addon Odoo Community com manifest, modelo, segurança e views;
+- testes dos três destinos e documentação de validação por plataforma.
+
 ## 0.2.0 — FORJA Enterprise OS
 
 - manifesto universal para software, processos, produtos, documentos, políticas, operações, análises, experimentos e decisões;
@@ -14,6 +21,13 @@
 - descoberta segura de README, Git, instruções, provas e testes;
 - nenhum script do repositório conectado é executado;
 - documentação do próximo passo de compatibilidade OonCore.
+
+## 0.4.0 — adaptadores de criação
+
+- criação local guiada;
+- scaffold oficial OonCore com versão fixa e plano antes de aplicar;
+- scaffold de addon Odoo Community com manifest, modelo, segurança e views;
+- testes dos três destinos e documentação de validação por plataforma.
 
 ## 0.1.0 — primeira forja
 
